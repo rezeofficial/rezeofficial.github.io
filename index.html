@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>REZEの小站</title>
+    <title>REZEのblog</title>
     <meta name="author" content="REZE" />
     <meta name="description" content="welcome！" />
     <meta name="keywords" content="" />
@@ -61,7 +61,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
-            <span>REZEの小站</span>
+            <span>REZEのBLOG</span>
         </a>
         
         <a href="/">
@@ -93,7 +93,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;REZEの小站</span>
+            <span>&emsp;REZEのBLOG</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -165,7 +165,7 @@
         <span class="loop"></span>
         <span class="info">
             <div class="wrap">
-                <h1>REZEの小站</h1>
+                <h1>REZEのblog</h1>
                 <h3></h3>
                 <h5>welcome！</h5>
             </div>
@@ -179,6 +179,99 @@
 >
     <div id="home-posts">
         
+
+<div class="post">
+    <a href="/2025/04/02/CTFHUB%20web%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/4/2
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>CTFHUB web前置技能</p>
+<p>HTTP协议：</p>
+<p>1.请求方式：</p>
+<p><img src="C:\Users\reze\AppData\Local\Temp\40bd4cb1-1b9c-4743-a863-05f3fee49864.png" alt="40bd4cb1-1b9c-4743-a863-05f3fee49864"></p>
+<p>翻译：HTTP Method 为 GET</p>
+<p>使用 CTF**B 方法，我会给你标记。</p>
+<p>提示： 如果你收到 “HTTP Method Not Allowed” 错误，你应该请求 index.php。</p>
+<p>使用bp拦截，将GET请求改为题目中的CTFHUB，再次发送，得到flag</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402183131657.png" alt="image-20250402183131657"></p>
+<p>ctfhub{02778be697ad5008bfe9ae63}</p>
+<p>302跳转：</p>
+<img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402183618400.png" alt="image-20250402183618400" style="zoom: 50%;" />
+
+<p>点击”give me flag“，发现无事发生，F12查看，发现状态302</p>
+<ul>
+<li><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402183807729.png" alt="image-20250402183807729" style="zoom: 50%;" /></li>
+</ul>
+<p>用bp拦截到index.php文件的请求，发送到repeater，尝试再次发送，得到flag</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402183954133.png" alt="image-20250402183954133"></p>
+<p>ctfhub{2fe8353641d31d1558f9daa9}</p>
+<p>3.cookie</p>
+<p>打开网页发现</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402184144232.png" alt="image-20250402184144232"></p>
+<p>发现有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: admin=0</span><br></pre></td></tr></table></figure>
+
+<p>发送到repeater，将0改为1，再次发送，得到flag</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402184424989.png" alt="image-20250402184424989"></p>
+<p>ctfhub{a7948d76c6736defe3023c77}</p>
+<p>4.基础认证</p>
+<p>进入网页后，点击click，显示让我们输入用户与密码</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402184622607.png" alt="image-20250402184622607"></p>
+<p>随便输入用户与密码</p>
+<p>在bp拦截看到<img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402184715603.png" alt="image-20250402184715603"></p>
+<p>Authorization: Basic YXNkYXNkOmFzZGFzZA&#x3D;&#x3D;</p>
+<p>一段base64编码，翻译后得到</p>
+<p>asdasd:asdasd</p>
+<p>我们尝试输入的账号与密码，中间使用‘：‘间隔，</p>
+<p>发送到repeater查看响应</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402184947084.png" alt="image-20250402184947084"></p>
+<p>有一条</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WWW-Authenticate: Basic realm=&quot;Do u know admin ?&quot;</span><br></pre></td></tr></table></figure>
+
+<p>我们尝试使用admin为账户名，以：为间隔，使用弱口令爆破</p>
+<p>发送到bp的intruder，使用sniper攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /flag.html HTTP/1.1</span><br><span class="line">Host: challenge-8a31bab7ddbc3de3.sandbox.ctfhub.com:10800</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Referer: http://challenge-8a31bab7ddbc3de3.sandbox.ctfhub.com:10800/</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Priority: u=0, i</span><br><span class="line">Authorization: Basic YWRtaW46YWRtaW4=</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>将“YWRtaW46YWRtaW4&#x3D;”设为ayload位置，添加“admin:”为前缀，base64编码的条件，开始弱口令爆破</p>
+<p>记得去掉URL编码字符</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402201426511.png" alt="image-20250402201426511"></p>
+<p>成功找到YWRtaW46MTIzNDU2</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402202131282.png" alt="image-20250402202131282"></p>
+<p>解码后得到admin:123456，输入后得到flag</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402202343168.png" alt="image-20250402202343168"></p>
+<p>ctfhub{6e8d7b074034d888aefae96f}</p>
+<p>5.响应包源代码</p>
+<p>打开后发现是一个贪吃蛇小游戏</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402202445544.png" alt="image-20250402202445544"></p>
+<p>F12查看元素，得到flag</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402202522821.png" alt="image-20250402202522821"></p>
+<p>ctfhub{ada8033f6296d9108c1623e9} </p>
+<p>展示成果</p>
+<p><img src="C:\Users\reze\AppData\Roaming\Typora\typora-user-images\image-20250402202607016.png" alt="image-20250402202607016"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/04/02/CTFHUB%20web%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/" class="go-post">阅读全文</a>
+</div>
 
 <div class="post">
     <a href="/2025/04/02/hello-world/">
@@ -267,7 +360,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2025 REZEの小站
+            2022 - 2025 REZEのblog
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
