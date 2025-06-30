@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ctfshow wp——信息搜集(web01-web20) | REZEのblog</title><meta name="author" content="REZE"><meta name="copyright" content="REZE"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ctfshow wp——信息搜集(web01-web20) web1web1:where is flag?开发注释未及时删除   F12查看源代码 &lt;!--# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-09-01 13:45:32# @Last Modified by:   h1xa# @Last Modified time: 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ctfshow wp——信息搜集(web01-web20)">
+<meta property="og:url" content="http://example.com/2025/06/28/CTFwp/ctfshow%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%EF%BC%88web1-20%EF%BC%89/index.html">
+<meta property="og:site_name" content="REZEのblog">
+<meta property="og:description" content="ctfshow wp——信息搜集(web01-web20) web1web1:where is flag?开发注释未及时删除   F12查看源代码 &lt;!--# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-09-01 13:45:32# @Last Modified by:   h1xa# @Last Modified time: 2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/178069793?v=4">
+<meta property="article:published_time" content="2025-06-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-30T14:51:41.139Z">
+<meta property="article:author" content="REZE">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/178069793?v=4"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ctfshow wp——信息搜集(web01-web20)",
+  "url": "http://example.com/2025/06/28/CTFwp/ctfshow%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%EF%BC%88web1-20%EF%BC%89/",
+  "image": "https://avatars.githubusercontent.com/u/178069793?v=4",
+  "datePublished": "2025-06-27T16:00:00.000Z",
+  "dateModified": "2025-06-30T14:51:41.139Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "REZE",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/06/28/CTFwp/ctfshow%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%EF%BC%88web1-20%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ctfshow wp——信息搜集(web01-web20)',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://avatars.githubusercontent.com/u/178069793?v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://uploadstatic.mihoyo.com/contentweb/20191114/2019111412083058815.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">REZEのblog</span></a><a class="nav-page-title" href="/"><span class="site-name">ctfshow wp——信息搜集(web01-web20)</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">ctfshow wp——信息搜集(web01-web20)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-27T16:00:00.000Z" title="发表于 2025-06-28 00:00:00">2025-06-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-30T14:51:41.139Z" title="更新于 2025-06-30 22:51:41">2025-06-30</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>ctfshow wp——信息搜集(web01-web20)</p>
+<h1 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h1><h3 id="web1-where-is-flag"><a href="#web1-where-is-flag" class="headerlink" title="web1:where is flag?"></a>web1:where is flag?</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">开发注释未及时删除 </span><br></pre></td></tr></table></figure>
+
+<p>F12查看源代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Author: h1xa</span><br><span class="line"># @Date:   2020-09-01 13:45:32</span><br><span class="line"># @Last Modified by:   h1xa</span><br><span class="line"># @Last Modified time: 2020-09-02 03:12:48</span><br><span class="line"># @email: h1xa@ctfer.com</span><br><span class="line"># @link: https://ctfer.com</span><br><span class="line"></span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;title&gt;CTFshow 新手入门题目 &lt;/title&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;h3&gt;web1:where is flag?&lt;/h3&gt;</span><br><span class="line">	&lt;!-- ctfshow&#123;9f6f5c41-03aa-4042-9104-41213bc6e21f&#125; --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>得到flag:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;9f6f5c41-03aa-4042-9104-41213bc6e21f&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">js前台拦截 === 无效操作</span><br></pre></td></tr></table></figure>
+
+<p>无法查看源代码</p>
+<p>ctrl+u查看网页源代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Author: h1xa</span><br><span class="line"># @Date:   2020-09-01 13:45:32</span><br><span class="line"># @Last Modified by:   h1xa</span><br><span class="line"># @Last Modified time: 2020-09-02 03:20:04</span><br><span class="line"># @email: h1xa@ctfer.com</span><br><span class="line"># @link: https://ctfer.com</span><br><span class="line"></span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;title&gt;CTFshow 新手入门题目 &lt;/title&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">	window.oncontextmenu = function()&#123;return false&#125;;</span><br><span class="line">	window.onselectstart = function()&#123;return false&#125;;</span><br><span class="line">	window.onkeydown = function()&#123;if (event.keyCode==123)&#123;event.keyCode=0;event.returnValue=false;&#125;&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;h3&gt;无法查看源代码&lt;/h3&gt;</span><br><span class="line">	&lt;!-- ctfshow&#123;1479640a-73e2-41c6-b759-bd17cb1daa38&#125; --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;1479640a-73e2-41c6-b759-bd17cb1daa38&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">没思路的时候抓个包看看，可能会有意外收获</span><br></pre></td></tr></table></figure>
+
+<p>web3:where is flag?</p>
+<p>F12,查看网络项</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">access-control-allow-credentials</span><br><span class="line">true</span><br><span class="line"></span><br><span class="line">access-control-allow-headers</span><br><span class="line">DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,x-auth-token,Cookies,Aaa,Date,Server,Content-Length,Connection</span><br><span class="line">access-control-allow-methods</span><br><span class="line">GET,POST,PUT,DELETE,OPTIONS</span><br><span class="line">access-control-expose-headers</span><br><span class="line">Content-Type,Cookies,Aaa,Date,Server,Content-Length,Connection</span><br><span class="line">access-control-max-age</span><br><span class="line">1728000</span><br><span class="line">connection</span><br><span class="line">keep-alive</span><br><span class="line">content-encoding</span><br><span class="line">gzip</span><br><span class="line">content-type</span><br><span class="line">text/html; charset=UTF-8</span><br><span class="line">date</span><br><span class="line">Mon, 30 Jun 2025 13:31:48 GMT</span><br><span class="line">flag</span><br><span class="line">ctfshow&#123;91bf4b26-5e76-43b7-a694-9970908eae96&#125;</span><br><span class="line">server</span><br><span class="line">nginx/1.20.1</span><br><span class="line">transfer-encoding</span><br><span class="line">chunked</span><br><span class="line">x-powered-by</span><br><span class="line">PHP/7.3.11</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;91bf4b26-5e76-43b7-a694-9970908eae96&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">总有人把后台地址写入robots，帮黑阔大佬们引路。</span><br></pre></td></tr></table></figure>
+
+<p>web4:where is flag?</p>
+<p>根据题目提示，查看robots.txt</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Disallow: /flagishere.txt</span><br></pre></td></tr></table></figure>
+
+<p>查看url&#x2F;&#x2F;flagishere.txt</p>
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;78888822-0dce-47fc-b6c2-1f7b69302800&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web5"><a href="#web5" class="headerlink" title="web5"></a>web5</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">phps源码泄露有时候能帮上忙</span><br></pre></td></tr></table></figure>
+
+<p>查看url&#x2F;index.phps</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Author: h1xa</span><br><span class="line"># @Date:   2020-09-01 14:14:17</span><br><span class="line"># @Last Modified by:   h1xa</span><br><span class="line"># @Last Modified time: 2020-09-01 14:34:53</span><br><span class="line"># @email: h1xa@ctfer.com</span><br><span class="line"># @link: https://ctfer.com</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">//ctfshow&#123;1b4b42ee-d038-433d-8639-1a24fbb4a22b&#125;</span><br><span class="line">echo &quot;web5:where is flag ?&quot;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;1b4b42ee-d038-433d-8639-1a24fbb4a22b&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">解压源码到当前目录，测试正常，收工</span><br></pre></td></tr></table></figure>
+
+<p>使用dirsearch工具扫描</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\reze&gt;cd dirsearch</span><br><span class="line"></span><br><span class="line">C:\Users\reze\dirsearch&gt;python dirsearch.py -u https://f360c7dc-a7bb-45bd-b817-976fafd54ca1.challenge.ctf.show/</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, asp, aspx, jsp, html, htm | HTTP method: GET | Threads: 25 | Wordlist size: 12292</span><br><span class="line"></span><br><span class="line">Target: https://f360c7dc-a7bb-45bd-b817-976fafd54ca1.challenge.ctf.show/</span><br><span class="line"></span><br><span class="line">[21:39:29] Scanning:</span><br><span class="line">[21:40:11] 200 -   486B - /www.zip</span><br><span class="line"></span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p>查看url&#x2F;&#x2F;<a target="_blank" rel="noopener" href="http://www.zip/">www.zip</a></p>
+<p>压缩包内有两项，提示我flag在fl000g.txt</p>
+<p>查看url&#x2F;fl000g.txt</p>
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;2a987e6b-6f7b-4c8a-9ee3-5709f9579f00&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">版本控制很重要，但不要部署到生产环境更重要。</span><br></pre></td></tr></table></figure>
+
+<p>web7:where is flag?</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, asp, aspx, jsp, html, htm | HTTP method: GET | Threads: 25 | Wordlist size: 12292</span><br><span class="line"></span><br><span class="line">Target: https://c1117d39-2102-4589-bb57-a93d1868f6af.challenge.ctf.show/</span><br><span class="line"></span><br><span class="line">[21:45:28] Scanning:</span><br><span class="line">[21:45:32] 301 -   169B - /.git  -&gt;  http://c1117d39-2102-4589-bb57-a93d1868f6af.challenge.ctf.show/.git/</span><br><span class="line">[21:45:32] 200 -    46B - /.git/</span><br></pre></td></tr></table></figure>
+
+<p>查看url&#x2F;.git</p>
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;147711f6-e831-4c04-bdfc-67a3f3d079fc&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">版本控制很重要，但不要部署到生产环境更重要。</span><br></pre></td></tr></table></figure>
+
+<p>web8:where is flag?</p>
+<p>扫描url</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, asp, aspx, jsp, html, htm | HTTP method: GET | Threads: 25 | Wordlist size: 12292</span><br><span class="line"></span><br><span class="line">Target: https://ea06a964-c13c-46f6-8f34-692761ba5ff1.challenge.ctf.show/</span><br><span class="line"></span><br><span class="line">[21:47:32] Scanning:</span><br><span class="line">[21:47:38] 301 -   169B - /.svn  -&gt;  http://ea06a964-c13c-46f6-8f34-692761ba5ff1.challenge.ctf.show/.svn/</span><br><span class="line">[21:47:38] 200 -    46B - /.svn/</span><br></pre></td></tr></table></figure>
+
+<p>查看url&#x2F;.svn</p>
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;970a109e-cace-4ac4-bbf5-a3fad8a2694c&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">发现网页有个错别字？赶紧在生产环境vim改下，不好，死机了</span><br></pre></td></tr></table></figure>
+
+<p>web9:where is flag?</p>
+<p>查看url&#x2F;index.php.swp</p>
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;8d17cc96-d8c3-4907-bb90-e7a3d87384f0&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cookie 只是一块饼干，不能存放任何隐私数据</span><br></pre></td></tr></table></figure>
+
+<p>F12查看网络选项，找到cookie</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cookie</span><br><span class="line">flag=ctfshow%7B6d5fcbf9-ade6-4f26-bece-63809cfccca3%7D</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;6d5fcbf9-ade6-4f26-bece-63809cfccca3&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web11"><a href="#web11" class="headerlink" title="web11"></a>web11</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">域名其实也可以隐藏信息，比如flag.ctfshow.com 就隐藏了一条信息</span><br></pre></td></tr></table></figure>
+
+<p>使用指令扫描</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nslookup -q=txt flag.ctfshow.com</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;just_seesee&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web12"><a href="#web12" class="headerlink" title="web12"></a>web12</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有时候网站上的公开信息，就是管理员常用密码</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, asp, aspx, jsp, html, htm | HTTP method: GET | Threads: 25 | Wordlist size: 12292</span><br><span class="line"></span><br><span class="line">Target: https://e8f7fb3f-cc4e-4b23-9cf1-05e5f553b39d.challenge.ctf.show/</span><br><span class="line"></span><br><span class="line">[21:59:26] Scanning:</span><br><span class="line">[22:00:18] 301 -   169B - /admin  -&gt;  http://e8f7fb3f-cc4e-4b23-9cf1-05e5f553b39d.challenge.ctf.show/admin/</span><br><span class="line">[22:00:21] 401 -    42B - /admin/</span><br><span class="line">[22:00:23] 401 -    42B - /admin/index.php</span><br></pre></td></tr></table></figure>
+
+<p>查看url&#x2F;admin，显示需要用户名和密码，用户名尝试admin，嗯句题目提示，在最底部看到了一串数字:372619038，作为密码尝试，得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;bf0af490-344e-4dec-af4d-523d29132b41&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web13"><a href="#web13" class="headerlink" title="web13"></a>web13</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">技术文档里面不要出现敏感信息，部署到生产环境后及时修改默认密码</span><br></pre></td></tr></table></figure>
+
+<p>在网页的底部，看到了documents一项，点击去后发现</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">⚫ 登陆</span><br><span class="line">默认后台地址：http://your-domain/system1103/login.php</span><br><span class="line">默认用户名：admin</span><br><span class="line">默认密码：admin110</span><br></pre></td></tr></table></figure>
+
+<p>登录后得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;935e116b-f16f-4541-a30a-805c4c67b287&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web14"><a href="#web14" class="headerlink" title="web14"></a>web14</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有时候源码里面就能不经意间泄露重要(editor)的信息,默认配置害死人</span><br></pre></td></tr></table></figure>
+
+<p>根据题目提示，查看url&#x2F;eidtor</p>
+<p>在提交文件中，可查看服务器文件，找到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;0c6d851d-36df-4203-a237-7f8aa1419c8c&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web15"><a href="#web15" class="headerlink" title="web15"></a>web15</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">公开的信息比如邮箱，可能造成信息泄露，产生严重后果</span><br></pre></td></tr></table></figure>
+
+<p>用dirsearch扫描url</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, asp, aspx, jsp, html, htm | HTTP method: GET | Threads: 25 | Wordlist size: 12292</span><br><span class="line"></span><br><span class="line">Target: https://fd633af2-e216-4deb-9707-ef6482a1063a.challenge.ctf.show/</span><br><span class="line"></span><br><span class="line">[22:21:05] Scanning:</span><br><span class="line">[22:21:25] 200 -    8KB - /about.html</span><br><span class="line">[22:21:28] 301 -   169B - /admin  -&gt;  http://fd633af2-e216-4deb-9707-ef6482a1063a.challenge.ctf.show/admin/</span><br><span class="line">[22:21:29] 200 -    1KB - /admin/</span><br><span class="line">[22:21:30] 200 -    1KB - /admin/index.php</span><br></pre></td></tr></table></figure>
+
+<p>进入url&#x2F;admin</p>
+<p>后台登录选项，点击忘记密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的所在地是哪个城市？</span><br></pre></td></tr></table></figure>
+
+<p>在原页面中，透露了qq邮箱</p>
+<p>用qq找到了本人，显示是西安人，输入西安后密码被重置为admin7789</p>
+<p>用其登录后拿到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;6a8cea05-5a2d-43f8-bde0-c8f3bdc8be5e&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web16"><a href="#web16" class="headerlink" title="web16"></a>web16</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">对于测试用的探针，使用完毕后要及时删除，可能会造成信息泄露</span><br></pre></td></tr></table></figure>
+
+<p>查看探针url&#x2F;tz.php</p>
+<p>点进后查看phpinfo</p>
+<p>找到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FLAG	ctfshow&#123;35c5c564-a0b8-445e-b928-311cedd8863c&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web17"><a href="#web17" class="headerlink" title="web17"></a>web17</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备份的sql文件会泄露敏感信息</span><br></pre></td></tr></table></figure>
+
+<p>用dirsearch扫描</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, asp, aspx, jsp, html, htm | HTTP method: GET | Threads: 25 | Wordlist size: 12292</span><br><span class="line"></span><br><span class="line">Target: https://e15c4b4f-7842-4f09-a974-5262d44209fa.challenge.ctf.show/</span><br><span class="line"></span><br><span class="line">[22:30:15] Scanning:</span><br><span class="line">[22:30:30] 200 -   934B - /backup.sql</span><br><span class="line">[22:30:37] 301 -   185B - /images  -&gt;  http://e15c4b4f-7842-4f09-a974-5262d44209fa.challenge.ctf.show/images/</span><br><span class="line">[22:30:37] 403 -   571B - /images/</span><br></pre></td></tr></table></figure>
+
+<p>查看url&#x2F;backup.sql</p>
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;b6dab5f3-a3b3-457e-a558-3512f442a316&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web18"><a href="#web18" class="headerlink" title="web18"></a>web18</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">不要着急，休息，休息一会儿，玩101分给你flag</span><br></pre></td></tr></table></figure>
+
+<p>F12查看源代码，得到了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(score&gt;100)</span><br><span class="line">&#123;</span><br><span class="line">var result=window.confirm(&quot;\u4f60\u8d62\u4e86\uff0c\u53bb\u5e7a\u5e7a\u96f6\u70b9\u76ae\u7231\u5403\u76ae\u770b\u770b&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解码后发现是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">16进制转字符:		你赢了，去幺幺零点皮爱吃皮看看</span><br></pre></td></tr></table></figure>
+
+<p>查看url&#x2F;110.php，得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;e5fa4ecb-d807-4f12-ba14-727328dbe3fa&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web19"><a href="#web19" class="headerlink" title="web19"></a>web19</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">密钥什么的，就不要放在前端了</span><br></pre></td></tr></table></figure>
+
+<p>F12查看源代码，发现</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;/script&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">    error_reporting(0);</span><br><span class="line">    $flag=&quot;fakeflag&quot;</span><br><span class="line">    $u = $_POST[&#x27;username&#x27;];</span><br><span class="line">    $p = $_POST[&#x27;pazzword&#x27;];</span><br><span class="line">    if(isset($u) &amp;&amp; isset($p))&#123;</span><br><span class="line">        if($u===&#x27;admin&#x27; &amp;&amp; $p ===&#x27;a599ac85a73384ee3219fa684296eaa62667238d608efa81837030bd1ce1bf04&#x27;)&#123;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    --&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用burpsuit抓包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST / HTTP/1.1</span><br><span class="line">Host: 44b39150-c659-466f-95a3-6a21e89743f8.challenge.ctf.show</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:139.0) Gecko/20100101 Firefox/139.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 88</span><br><span class="line">Origin: https://44b39150-c659-466f-95a3-6a21e89743f8.challenge.ctf.show</span><br><span class="line">Referer: https://44b39150-c659-466f-95a3-6a21e89743f8.challenge.ctf.show/</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Priority: u=0, i</span><br><span class="line">Te: trailers</span><br><span class="line">Connection: keep-alive</span><br><span class="line"></span><br><span class="line">username=admin&amp;pazzword=a599ac85a73384ee3219fa684296eaa62667238d608efa81837030bd1ce1bf04</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctfshow&#123;38547630-0ea1-4d66-9923-44b98a926d0b&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="web20"><a href="#web20" class="headerlink" title="web20"></a>web20</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mdb文件是早期asp+access构架的数据库文件，文件泄露相当于数据库被脱裤了。</span><br></pre></td></tr></table></figure>
+
+<p>扫描发现url&#x2F;db&#x2F;db.mdb</p>
+<p>下载后查看，找到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;ctfshow_old_database&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此，完结</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">REZE</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/06/28/CTFwp/ctfshow%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%EF%BC%88web1-20%EF%BC%89/">http://example.com/2025/06/28/CTFwp/ctfshow%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%EF%BC%88web1-20%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">REZEのblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ctf/">ctf</a></div><div class="post-share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/178069793?v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/24/CTFwp/uploads-labs6-10/" title="uploads-lab6-10"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">uploads-lab6-10</div></div><div class="info-2"><div class="info-item-1">uploads-lab6-10 pass6： $is_upload = false;$msg = null;if (isset($_POST[&#x27;submit&#x27;])) &#123;    if (file_exists(UPLOAD_PATH)) &#123;        $deny_ext =...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/04/06/CTFwp/CTFHUB-web%E4%B9%8Bsql%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89/" title="CTFHUB web之sql注入（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-06</div><div class="info-item-2">CTFHUB web之sql注入（一）</div></div><div class="info-2"><div class="info-item-1">这几天把sql注入最基础的一些给学了，用到了CTFHUB平台 1.整数型注入 拿到题目，打开网址，我们往输入框里输入1，显示如下，接下来我们输入  1&#x27;-- -1a&#x27; --1&quot; -- -1a&quot; -- -1 -- -1a -- -  我们发现，输入第五条时，回显存在，接下来我们以第五条为基础，编写我们的注入语句 我们查询的顺序依次是： DATABASE()——表名（table_name）——列名（column_name）——列中内容 首先我们使用order by语句 1 order by xxx -- -    我们注意到，order by语句后为1和2时存在回显，3则无回显，我们得知，接下来的联合查询union select语句 应该为 1 union select 1,2 -- -    输入后我们观察到  成功出现回显，将1改为-1接着我们逐步搜查表名，列名 库名： -1 union select 1,database() -- -  表名: -1 union select 1,table_name from...</div></div></div></a><a class="pagination-related" href="/2025/04/02/CTFwp/CTFHUB%20web%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/" title="CTFHUB web前置技能"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-02</div><div class="info-item-2">CTFHUB web前置技能</div></div><div class="info-2"><div class="info-item-1">CTFHUB web前置技能 HTTP协议： 1.请求方式：  翻译：HTTP Method 为 GET 使用 CTF**B 方法，我会给你标记。 提示： 如果你收到 “HTTP Method Not Allowed” 错误，你应该请求 index.php。 使用bp拦截，将GET请求改为题目中的CTFHUB，再次发送，得到flag  ctfhub{02778be697ad5008bfe9ae63} 302跳转：  点击”give me flag“，发现无事发生，F12查看，发现状态302    用bp拦截到index.php文件的请求，发送到repeater，尝试再次发送，得到flag  ctfhub{2fe8353641d31d1558f9daa9} 3.cookie 打开网页发现  发现有： Cookie:...</div></div></div></a><a class="pagination-related" href="/2025/05/24/CTFwp/uploads-labs6-10/" title="uploads-lab6-10"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-24</div><div class="info-item-2">uploads-lab6-10</div></div><div class="info-2"><div class="info-item-1">uploads-lab6-10 pass6： $is_upload = false;$msg = null;if (isset($_POST[&#x27;submit&#x27;])) &#123;    if (file_exists(UPLOAD_PATH)) &#123;        $deny_ext =...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://avatars.githubusercontent.com/u/178069793?v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">REZE</div><div class="author-info-description">welcome!</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/rezeofficial"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/rezeofficial/" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:3376262315@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/3461564694792369?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fas fa-brands fa-bilibili" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web1"><span class="toc-number">1.</span> <span class="toc-text">web1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web1-where-is-flag"><span class="toc-number">1.0.1.</span> <span class="toc-text">web1:where is flag?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web2"><span class="toc-number">2.</span> <span class="toc-text">web2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web3"><span class="toc-number">3.</span> <span class="toc-text">web3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web4"><span class="toc-number">4.</span> <span class="toc-text">web4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web5"><span class="toc-number">5.</span> <span class="toc-text">web5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web6"><span class="toc-number">6.</span> <span class="toc-text">web6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web7"><span class="toc-number">7.</span> <span class="toc-text">web7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web8"><span class="toc-number">8.</span> <span class="toc-text">web8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web9"><span class="toc-number">9.</span> <span class="toc-text">web9</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web10"><span class="toc-number">10.</span> <span class="toc-text">web10</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web11"><span class="toc-number">11.</span> <span class="toc-text">web11</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web12"><span class="toc-number">12.</span> <span class="toc-text">web12</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web13"><span class="toc-number">13.</span> <span class="toc-text">web13</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web14"><span class="toc-number">14.</span> <span class="toc-text">web14</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web15"><span class="toc-number">15.</span> <span class="toc-text">web15</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web16"><span class="toc-number">16.</span> <span class="toc-text">web16</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web17"><span class="toc-number">17.</span> <span class="toc-text">web17</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web18"><span class="toc-number">18.</span> <span class="toc-text">web18</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web19"><span class="toc-number">19.</span> <span class="toc-text">web19</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web20"><span class="toc-number">20.</span> <span class="toc-text">web20</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/28/CTFwp/ctfshow%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%EF%BC%88web1-20%EF%BC%89/" title="ctfshow wp——信息搜集(web01-web20)">ctfshow wp——信息搜集(web01-web20)</a><time datetime="2025-06-27T16:00:00.000Z" title="发表于 2025-06-28 00:00:00">2025-06-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/24/CTFwp/uploads-labs6-10/" title="uploads-lab6-10">uploads-lab6-10</a><time datetime="2025-05-23T16:00:00.000Z" title="发表于 2025-05-24 00:00:00">2025-05-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/06/CTFwp/CTFHUB-web%E4%B9%8Bsql%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89/" title="CTFHUB web之sql注入（一）">CTFHUB web之sql注入（一）</a><time datetime="2025-04-05T16:00:00.000Z" title="发表于 2025-04-06 00:00:00">2025-04-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/05/%E5%BC%80%E7%AB%AF/" title="开端">开端</a><time datetime="2025-04-05T06:33:19.749Z" title="发表于 2025-04-05 14:33:19">2025-04-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/02/CTFwp/CTFHUB%20web%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/" title="CTFHUB web前置技能">CTFHUB web前置技能</a><time datetime="2025-04-01T16:00:00.000Z" title="发表于 2025-04-02 00:00:00">2025-04-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By REZE</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
